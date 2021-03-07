@@ -7,7 +7,7 @@
 extents = Vector2( 64, 64 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 70, 70 )
+extents = Vector2( 72, 72 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 12
@@ -16,13 +16,18 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 1 )
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 2 )
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
